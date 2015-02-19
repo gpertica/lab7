@@ -8,11 +8,12 @@ var models = require('../models');
 exports.view = function(req, res){
 
 	models.Project
-		.find()
+		.find("title")
 		.sort('date')
 		.exec(renderProjects);
 
 	function renderProjects(err, projects) {
+		console.log(projects);
 		res.render('index', { 'projects': projects });
 	}
 
